@@ -7,6 +7,7 @@ import Timeline from "@/components/Timeline";
 import Certificates from "@/components/Certificates";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import TechStack from "@/components/TechStack";
+import Tilt from "@/components/Tilt";   // ⭐ IMPORT 3D Tilt
 
 export default function AboutPage() {
   return (
@@ -18,18 +19,18 @@ export default function AboutPage() {
         <LottieBackground />
       </div>
 
-      {/* TOP SECTION (Profile + Skills) */}
+      {/* TOP — Profile + Skills */}
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start justify-between gap-16 mt-20">
 
-        {/* LEFT COLUMN */}
+        {/* LEFT COLUMN — Profile Card (NO tilt here) */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           className="w-full lg:w-1/2 flex flex-col items-center lg:items-start relative z-10"
         >
-          {/* Profile Card */}
-          <div className="backdrop-blur-xl bg-white/10 border border-white/20 shadow-xl rounded-3xl p-6 w-full max-w-sm flex flex-col items-center gap-4 hover:scale-105 transition-all duration-500 mb-8">
+          <div className="backdrop-blur-xl bg-white/10 border border-white/20 shadow-xl rounded-3xl p-6 
+                          w-full max-w-sm flex flex-col items-center gap-4 transition-all duration-500 mb-8">
             <motion.img
               src="/profile.jpg"
               alt="profile"
@@ -71,56 +72,52 @@ export default function AboutPage() {
           </motion.p>
         </motion.div>
 
-        {/* RIGHT COLUMN — SKILLS */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          className="backdrop-blur-xl bg-white/5 p-10 rounded-2xl border border-white/10 shadow-lg w-full lg:w-1/2 z-10 flex flex-col gap-12"
-        >
-          <motion.h2
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-3xl font-semibold text-center"
-          >
-            Skills
-          </motion.h2>
+        {/* RIGHT COLUMN — SKILLS with 3D Tilt */}
+        <Tilt className="w-full lg:w-1/2">
+          <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-10 flex flex-col gap-12">
+            <h2 className="text-3xl font-semibold text-center">Skills</h2>
 
-          <div className="space-y-6">
-            <SkillBar skill="Next.js" level="90" />
-            <SkillBar skill="React.js" level="85" />
-            <SkillBar skill="Tailwind CSS" level="80" />
-            <SkillBar skill="JavaScript" level="88" />
-            <SkillBar skill="Node.js" level="70" />
+            <div className="space-y-6">
+              <SkillBar skill="Next.js" level="90" />
+              <SkillBar skill="React.js" level="85" />
+              <SkillBar skill="Tailwind CSS" level="80" />
+              <SkillBar skill="JavaScript" level="88" />
+              <SkillBar skill="Node.js" level="70" />
+            </div>
           </div>
-        </motion.div>
+        </Tilt>
       </div>
 
-     {/* 🔥 TIMELINE + TECH STACK — PERFECT TOP ALIGNMENT */}
-<div className="max-w-7xl mx-auto mt-24 flex flex-col lg:flex-row gap-16">
+      {/* TIMELINE + TECHSTACK BOTH WITH TILT */}
+      <div className="max-w-7xl mx-auto mt-24 flex flex-col lg:flex-row gap-16">
 
-  {/* LEFT 50% — TIMELINE */}
-  <div className="w-full lg:w-1/2 flex flex-col justify-start items-start">
-    <Timeline />
-  </div>
+        <Tilt className="w-full lg:w-1/2">
+          <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-8">
+            <Timeline />
+          </div>
+        </Tilt>
 
-  {/* RIGHT 50% — TECH STACK */}
-  <div className="w-full lg:w-1/2 flex flex-col justify-start items-start">
-    {/* REMOVE ANY MARGIN-TOP INSIDE TECHSTACK */}
-    <TechStack />
-  </div>
-
-</div>
-
+        <Tilt className="w-full lg:w-1/2">
+          <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-8">
+            <TechStack />
+          </div>
+        </Tilt>
+      </div>
 
       {/* Certificates */}
-      <div className="w-full mt-20">
-        <Certificates />
-      </div>
+    
+        <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-8">
+          <Certificates />
+        </div>
+      
 
       {/* Testimonials */}
-      <TestimonialsCarousel />
+      <Tilt className="w-full mt-20">
+        <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-8">
+          <TestimonialsCarousel />
+        </div>
+      </Tilt>
+
     </main>
   );
 }
@@ -138,7 +135,7 @@ const SkillBar = ({ skill, level }) => (
         initial={{ width: 0 }}
         animate={{ width: `${level}%` }}
         transition={{ duration: 0.8 }}
-        className="h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl"
+        className="h-3 bg-linear-to-r from-blue-500 to-purple-500 rounded-xl"
       />
     </div>
   </motion.div>
