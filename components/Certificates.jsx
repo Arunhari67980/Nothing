@@ -55,7 +55,7 @@ export default function Certificates() {
             <div className="w-full h-40 overflow-hidden rounded-xl bg-black/20">
               <img
                 src={cert.image}
-                alt={cert.title}
+                alt="certificate"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -67,53 +67,31 @@ export default function Certificates() {
         ))}
       </div>
 
-      {/* FULLSCREEN OVERLAY + CENTERED CONSTRAINED MODAL */}
+      {/* FULLSCREEN MODAL */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div
-            className="fixed inset-0 bg-black/70 backdrop-blur-md z-[999] flex items-center justify-center px-6"
+            className="fixed inset-0 bg-black/80 backdrop-blur-xl flex items-center justify-center z-999"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelectedImage(null)} // close on backdrop click
           >
-            {/* Centered container constrained to page width (max-w-7xl),
-                prevents the image from occupying the whole viewport */}
-            <div
-              className="relative w-full max-w-7xl mx-auto"
-              onClick={(e) => e.stopPropagation()} // prevent close when clicking inside
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-6 right-6 text-white text-3xl font-bold hover:text-red-400 transition"
             >
-              {/* Card wrapper keeps the close button inside and adds padding */}
-              <motion.div
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.95, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="bg-black/20 rounded-xl border border-white/10 p-4 shadow-2xl"
-              >
-                {/* Close button inside the constrained card */}
-                <button
-                  onClick={() => setSelectedImage(null)}
-                  className="absolute top-3 right-3 bg-white/10 border border-white/20 p-2 rounded-full text-white text-lg hover:bg-white/20 transition z-20"
-                  aria-label="Close certificate"
-                >
-                  ✖
-                </button>
+              ✖
+            </button>
 
-                {/* Image area: max height constrained, scaled to fit container */}
-                <div className="w-full flex items-center justify-center">
-                  <motion.img
-                    src={selectedImage}
-                    alt="certificate fullscreen"
-                    className="w-full h-auto max-h-[75vh] object-contain rounded-md"
-                    initial={{ scale: 0.98 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0.98 }}
-                    onClick={(e) => e.stopPropagation()} // clicking image shouldn't close
-                  />
-                </div>
-              </motion.div>
-            </div>
+            {/* Fullscreen Image */}
+            <motion.img
+              src={selectedImage}
+              className="max-w-[90%] max-h-[90%] rounded-xl shadow-2xl border border-white/20"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+            />
           </motion.div>
         )}
       </AnimatePresence>

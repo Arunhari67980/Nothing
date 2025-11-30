@@ -1,8 +1,8 @@
-// components/ProjectCard3D.jsx
 "use client";
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import ProjectModal from "./ProjectModal";
 
 export default function ProjectCard3D({
   title,
@@ -12,18 +12,22 @@ export default function ProjectCard3D({
   link = "#",
 }) {
   const cardRef = useRef(null);
-  const [style, setStyle] = useState({ transform: "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)" });
+  const [style, setStyle] = useState({
+    transform: "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)"
+  });
+
+  const [open, setOpen] = useState(false);
 
   function handleMove(e) {
     const rect = cardRef.current.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width; // 0 -> 1
-    const py = (e.clientY - rect.top) / rect.height; // 0 -> 1
-    const rotateY = (px - 0.5) * 20; // -10deg -> 10deg
-    const rotateX = (0.5 - py) * 20; // -10deg -> 10deg
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    const rotateY = (px - 0.5) * 20;
+    const rotateX = (0.5 - py) * 20;
     const scale = 1.03;
 
     setStyle({
-      transform: `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale(${scale})`,
+      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`,
       transition: "transform 120ms linear",
     });
   }
@@ -36,78 +40,91 @@ export default function ProjectCard3D({
   }
 
   return (
-    <motion.a
-      href={link}
-      target={link === "#" ? undefined : "_blank"}
-      rel={link === "#" ? undefined : "noopener noreferrer"}
-      ref={cardRef}
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
-      onTouchStart={(e) => {
-        /* small tilt on touch */
-        const touch = e.touches[0];
-        if (touch) handleMove({ clientX: touch.clientX, clientY: touch.clientY, currentTarget: cardRef.current });
-      }}
-      className="block w-full"
-      style={{ perspective: 1200 }}
-    >
+    <>
+      {/* Card */}
       <motion.div
-        style={style}
-        whileHover={{ scale: 1.04 }}
-        transition={{ type: "spring", stiffness: 200, damping: 18 }}
-        className="relative rounded-2xl overflow-hidden
-                   bg-black/40 border border-white/10
-                   backdrop-blur-md shadow-2xl
-                   hover:shadow-[0_10px_40px_rgba(99,102,241,0.15)]
-                   transition-all duration-300"
+        ref={cardRef}
+        onMouseMove={handleMove}
+        onMouseLeave={handleLeave}
+        onClick={() => setOpen(true)}
+        className="relative group cursor-pointer select-none"
+        style={{ perspective: 1200 }}
       >
-        {/* Neon outer glow element */}
-        <div className="absolute -inset-1 pointer-events-none rounded-2xl"
-             style={{
-               background:
-                 "linear-gradient(120deg, rgba(99,102,241,0.18), rgba(139,92,246,0.14), rgba(14,165,233,0.08))",
-               filter: "blur(24px)",
-               opacity: 0.95,
-             }}
-        />
+        <motion.div
+          style={style}
+          whileHover={{ scale: 1.04 }}
+          transition={{ type: "spring", stiffness: 200, damping: 18 }}
+          className="relative rounded-2xl overflow-hidden 
+            bg-black/40 border border-white/10 
+            backdrop-blur-md shadow-2xl
+            transition-all duration-300"
+        >
 
-        {/* Image */}
-        <div className="w-full h-44 sm:h-52 md:h-56 lg:h-44 xl:h-56 overflow-hidden">
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
-            draggable={false}
+          {/* Neon Glow */}
+          <div
+            className="absolute -inset-1 rounded-2xl pointer-events-none"
+            style={{
+              background: "linear-gradient(120deg, rgba(99,102,241,0.18), rgba(139,92,246,0.14), rgba(14,165,233,0.1))",
+              filter: "blur(28px)",
+            }}
           />
-        </div>
 
-        {/* Content */}
-        <div className="p-4 sm:p-5">
-          <h3 className="text-lg sm:text-xl font-semibold text-white">{title}</h3>
-          <p className="mt-2 text-sm sm:text-base text-gray-300 line-clamp-3">{description}</p>
-
-          <div className="mt-4 flex flex-wrap gap-2">
-            {tags.map((t, i) => (
-              <span
-                key={i}
-                className="text-xs sm:text-sm px-2 py-1 rounded-full bg-white/6 border border-white/6 text-gray-200"
-              >
-                {t}
-              </span>
-            ))}
+          {/* Shine Effect */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 pointer-events-none">
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent rotate-12
+            -translate-x-[150%] group-hover:translate-x-[150%] duration-700" />
           </div>
 
-          <div className="mt-4 flex items-center justify-between">
-            <span className="text-xs text-gray-400">View project</span>
-            <div
-              className="px-3 py-1 rounded-full bg-white/6 border border-white/8 text-xs text-white/90"
-              aria-hidden
-            >
-              →
+          {/* Category Badge */}
+          <div className="absolute top-3 left-3 bg-black/60 px-3 py-1 text-xs rounded-md border border-white/10 text-white/80">
+            {tags[0]}
+          </div>
+
+          {/* Image */}
+          <div className="w-full h-48 overflow-hidden rounded-lg">
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+            />
+          </div>
+
+          {/* Content */}
+          <div className="p-4">
+            <h3 className="text-xl font-semibold">{title}</h3>
+            <p className="text-gray-300 text-sm mt-2 line-clamp-3">{description}</p>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {tags.map((t, i) => (
+                <span
+                  key={i}
+                  className="px-2 py-1 text-xs rounded-full bg-white/5 border border-white/10 text-gray-200
+                  hover:bg-purple-500/20 hover:text-white transition-all"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-4 flex justify-between text-white/70 text-sm">
+              <span>View Project</span>
+              <span>→</span>
             </div>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
-    </motion.a>
+
+      {/* Modal */}
+      {open && (
+        <ProjectModal
+          title={title}
+          description={description}
+          image={image}
+          tags={tags}
+          link={link}
+          onClose={() => setOpen(false)}
+        />
+      )}
+    </>
   );
 }
