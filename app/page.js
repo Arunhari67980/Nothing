@@ -6,6 +6,9 @@ import Navbar from "@/components/Navbar";
 import ParallaxBackground from "@/components/ParallaxBackground";
 import TypingText from "@/components/TypingText";
 import Link from "next/link";
+import MiniArunChat from "@/components/MiniArunChat";
+
+
 
 export default function Home() {
   return (
@@ -92,7 +95,10 @@ export default function Home() {
           </Link>
         </motion.div>
 
+
       </div>
+      <MiniArunChat />
+
     </main>
   );
 }

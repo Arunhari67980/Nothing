@@ -7,7 +7,7 @@ export default function ProjectModal({ title, description, image, tags, link, on
     <AnimatePresence>
       <motion.div
         className="fixed inset-0 bg-black/70 backdrop-blur-xl 
-        flex items-center justify-center z-[999]"
+        flex items-center justify-center z-999"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

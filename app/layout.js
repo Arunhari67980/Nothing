@@ -1,5 +1,7 @@
 import AnimationProvider from "./animation-provider";
 import "./globals.css";
+import MiniArunChat from "@/components/MiniArunChat";
+
 
 export const metadata = {
   title: "Portfolio",
@@ -13,6 +15,8 @@ export default function RootLayout({ children }) {
         <AnimationProvider>
           {children}
         </AnimationProvider>
+        <MiniArunChat />
+
       </body>
     </html>
   );

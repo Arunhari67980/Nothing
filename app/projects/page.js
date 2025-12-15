@@ -89,7 +89,7 @@ export default function ProjectsPage() {
           transition={{ duration: 0.6 }}
           className="text-4xl sm:text-5xl font-bold mb-6 text-center"
         >
-          Selected Projects
+          My Projects
         </motion.h1>
 
         {/* Subtitle */}
@@ -99,7 +99,7 @@ export default function ProjectsPage() {
           transition={{ delay: 0.12, duration: 0.6 }}
           className="text-center text-gray-300 max-w-2xl mx-auto mb-10"
         >
-          A curated selection of projects showing front-end craftsmanship, performance optimizations and clean UX.
+        Projects showing front-end craftsmanship, performance optimizations and clean UX.
         </motion.p>
 
         {/* FILTER BUTTONS */}
