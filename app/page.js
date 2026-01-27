@@ -1,14 +1,26 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import ParallaxBackground from "@/components/ParallaxBackground";
-import TypingText from "@/components/TypingText";
+import { Button } from "../components/ui/button";
+import Navbar from "../components/Navbar";
+import ParallaxBackground from "../components/ParallaxBackground";
+import TypingText from "../components/TypingText";
 import Link from "next/link";
-import MiniArunChat from "@/components/MiniArunChat";
+import MiniArunChat from "../components/MiniArunChat";
 
+// Generate particles outside component to avoid impure function in render
+function generateParticles() {
+  return Array.from({ length: 50 }).map((_, i) => ({
+    id: i,
+    x: Math.random() * 800,
+    y: Math.random() * 800,
+    duration: 6 + Math.random() * 6,
+    yAnimate: (Math.random() * 800) - 400,
+  }));
+}
 
+const PARTICLES = generateParticles();
 
 export default function Home() {
   return (
@@ -29,17 +41,17 @@ export default function Home() {
 
       {/* Floating particles */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        {Array.from({ length: 50 }).map((_, i) => (
+        {PARTICLES.map((particle) => (
           <motion.div
-            key={i}
+            key={particle.id}
             className="absolute w-1 h-1 bg-white rounded-full"
-            initial={{ opacity: 0, x: Math.random() * 800, y: Math.random() * 800 }}
+            initial={{ opacity: 0, x: particle.x, y: particle.y }}
             animate={{
               opacity: [0.4, 1, 0.4],
-              y: (Math.random() * 800) - 400,
+              y: particle.yAnimate,
             }}
             transition={{
-              duration: 6 + Math.random() * 6,
+              duration: particle.duration,
               repeat: Infinity,
               ease: "linear",
             }}

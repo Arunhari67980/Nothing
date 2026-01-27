@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
+import Navbar from "../../components/Navbar";
 import { motion } from "framer-motion";
-import ProjectCard3D from "@/components/ProjectCard3D";
+import ProjectCard3D from "../../components/ProjectCard3D";
 
 export default function ProjectsPage() {
   // Available filter categories

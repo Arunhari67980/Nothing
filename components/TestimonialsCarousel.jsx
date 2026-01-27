@@ -86,7 +86,7 @@ export default function TestimonialsCarousel() {
               />
 
               <p className="text-gray-300 italic text-lg leading-relaxed">
-                "{testimonials[index].message}"
+                &quot;{testimonials[index].message}&quot;
               </p>
 
               <h3 className="text-xl font-semibold">

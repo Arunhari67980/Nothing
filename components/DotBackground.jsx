@@ -2,15 +2,18 @@
 
 import { useState, useEffect } from "react";
 
+function generateDots() {
+  return Array.from({ length: 20 }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight
+  }));
+}
+
 export default function DotBackground() {
   const [dots, setDots] = useState([]);
 
   useEffect(() => {
-    const newDots = Array.from({ length: 20 }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight
-    }));
-    setDots(newDots);
+    setDots(generateDots());
   }, []);
 
   return (

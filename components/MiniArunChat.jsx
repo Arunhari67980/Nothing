@@ -7,7 +7,7 @@ export default function MiniArunChat() {
   const [msg, setMsg] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   async function sendMessage() {
     if (!msg.trim()) return;

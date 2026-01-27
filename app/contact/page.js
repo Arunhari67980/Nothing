@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
+import Navbar from "../../components/Navbar";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 
@@ -54,7 +54,7 @@ export default function ContactPage() {
           className="flex flex-col gap-6"
         >
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
-            Let's Work <span className="text-blue-400">Together</span>
+            Let&apos;s Work <span className="text-blue-400">Together</span>
           </h1>
 
           <p className="text-gray-300 text-lg max-w-lg">

@@ -30,11 +30,51 @@ BEHAVIOR:
 - Always sound pleasant and professional
 `;
 
+// Validate environment variables
+function validateEnv() {
+  if (!process.env.GROQ_API_KEY) {
+    throw new Error("Missing GROQ_API_KEY environment variable");
+  }
+}
+
+// Simple rate limiting
+const requestCounts = new Map();
+const RATE_LIMIT = 10;
+const RATE_LIMIT_WINDOW = 60000;
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  if (!requestCounts.has(ip)) {
+    requestCounts.set(ip, []);
+  }
+  
+  const timestamps = requestCounts.get(ip);
+  const recentRequests = timestamps.filter(t => now - t < RATE_LIMIT_WINDOW);
+  
+  if (recentRequests.length >= RATE_LIMIT) {
+    return false;
+  }
+  
+  recentRequests.push(now);
+  requestCounts.set(ip, recentRequests);
+  return true;
+}
+
 export async function POST(req) {
   try {
+    validateEnv();
+
+    const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+    if (!checkRateLimit(ip)) {
+      return NextResponse.json(
+        { reply: "Too many requests. Please try again later 🙂" },
+        { status: 429 }
+      );
+    }
+
     const { message } = await req.json();
 
-    if (!message) {
+    if (!message?.trim()) {
       return NextResponse.json({
         reply: "Please ask me something 🙂",
       });
