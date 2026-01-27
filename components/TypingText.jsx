@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 
 export default function TypingText({ text, speed = 0.06, className = "" }) {
-  const letters = text.split("");
+  // Use spread operator to properly handle Unicode characters (emojis)
+  const letters = [...text];
 
   return (
     <motion.div
