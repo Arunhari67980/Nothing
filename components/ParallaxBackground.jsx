@@ -32,16 +32,10 @@ export default function ParallaxBackground() {
       className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
     >
       <motion.div
-        className="
-        w-[900px] h-[900px] rounded-full 
-        bg-purple-600/40 blur-[160px] absolute top-10 left-1/3
-      "
+        className="w-[900px] h-[900px] rounded-full bg-purple-600/40 blur-[160px] absolute top-10 left-1/3"
       />
       <motion.div
-        className="
-        w-[800px] h-[800px] rounded-full 
-        bg-blue-600/40 blur-[160px] absolute bottom-20 right-1/4
-      "
+        className="w-[800px] h-[800px] rounded-full bg-blue-600/40 blur-[160px] absolute bottom-20 right-1/4"
       />
     </motion.div>
   );

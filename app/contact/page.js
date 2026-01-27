@@ -115,9 +115,7 @@ export default function ContactPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your name"
-                className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 
-                           focus:border-blue-500 focus:bg-white/20 outline-none 
-                           transition w-full"
+                className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-blue-500 focus:bg-white/20 outline-none transition w-full"
               />
             </div>
 
@@ -130,9 +128,7 @@ export default function ContactPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 
-                           focus:border-blue-500 focus:bg-white/20 outline-none 
-                           transition w-full"
+                className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-blue-500 focus:bg-white/20 outline-none transition w-full"
               />
             </div>
 
@@ -145,9 +141,7 @@ export default function ContactPage() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Tell me about your project..."
-                className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 
-                           focus:border-blue-500 focus:bg-white/20 outline-none 
-                           transition w-full resize-none"
+                className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-blue-500 focus:bg-white/20 outline-none transition w-full resize-none"
               ></textarea>
             </div>
 
@@ -156,8 +150,7 @@ export default function ContactPage() {
               disabled={loading}
               whileHover={!loading ? { scale: 1.05 } : {}}
               whileTap={!loading ? { scale: 0.96 } : {}}
-              className="w-full py-3 rounded-xl bg-white text-black font-semibold 
-                         hover:bg-gray-200 transition disabled:opacity-50"
+              className="w-full py-3 rounded-xl bg-white text-black font-semibold hover:bg-gray-200 transition disabled:opacity-50"
             >
               {loading ? "Sending..." : "Send Message"}
             </motion.button>
@@ -191,8 +184,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
-          className="fixed bottom-10 left-1/2 -translate-x-1/2 
-                     bg-green-500 text-white px-6 py-3 rounded-xl shadow-xl"
+          className="fixed bottom-10 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-xl shadow-xl"
         >
           ✓ Message Sent Successfully!
         </motion.div>

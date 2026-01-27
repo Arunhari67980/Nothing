@@ -2,18 +2,16 @@
 
 import { useState, useEffect } from "react";
 
-function generateDots() {
-  return Array.from({ length: 20 }, () => ({
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight
-  }));
-}
-
 export default function DotBackground() {
   const [dots, setDots] = useState([]);
 
   useEffect(() => {
-    setDots(generateDots());
+    // Generate dots only on client side to avoid hydration mismatch
+    const generatedDots = Array.from({ length: 20 }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight
+    }));
+    setDots(generatedDots);
   }, []);
 
   return (

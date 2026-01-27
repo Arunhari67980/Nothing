@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "../components/ui/button";
 import Navbar from "../components/Navbar";
@@ -9,7 +9,7 @@ import TypingText from "../components/TypingText";
 import Link from "next/link";
 import MiniArunChat from "../components/MiniArunChat";
 
-// Generate particles outside component to avoid impure function in render
+// Generate particles only on client side to avoid hydration mismatch
 function generateParticles() {
   return Array.from({ length: 50 }).map((_, i) => ({
     id: i,
@@ -20,9 +20,12 @@ function generateParticles() {
   }));
 }
 
-const PARTICLES = generateParticles();
-
 export default function Home() {
+  const [particles, setParticles] = useState([]);
+
+  useEffect(() => {
+    setParticles(generateParticles());
+  }, []);
   return (
     <main className="min-h-screen bg-black text-white px-6 flex flex-col items-center justify-center overflow-hidden relative">
 
@@ -41,7 +44,7 @@ export default function Home() {
 
       {/* Floating particles */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        {PARTICLES.map((particle) => (
+        {particles.map((particle) => (
           <motion.div
             key={particle.id}
             className="absolute w-1 h-1 bg-white rounded-full"
@@ -69,10 +72,7 @@ export default function Home() {
         <TypingText
           text="Hi, I'm Arun U👨‍💻"
           speed={0.10}
-          className="
-            text-2xl sm:text-3xl md:text-4xl lg:text-5xl 
-            font-bold text-center
-          "
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center"
         />
       </motion.h1>
 

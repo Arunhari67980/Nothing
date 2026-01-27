@@ -140,11 +140,7 @@ export default function ProjectsPage() {
         <div className="mt-12 flex justify-center">
           <a
             href="#"
-            className="relative inline-flex items-center gap-3 px-8 py-4 rounded-full 
-            bg-white/10 border border-white/20 text-white text-lg
-            hover:shadow-[0_0_25px_rgba(139,92,246,0.6)]
-            hover:border-purple-500/50
-            transition-all duration-300"
+            className="relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white/10 border border-white/20 text-white text-lg hover:shadow-[0_0_25px_rgba(139,92,246,0.6)] hover:border-purple-500/50 transition-all duration-300"
           >
             View more projects →
           </a>

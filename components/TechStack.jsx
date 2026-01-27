@@ -20,16 +20,7 @@ export default function TechStack() {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7 }}
         whileHover={{ scale: 1.03 }}
-        className="
-          relative 
-          p-[3px]
-          rounded-2xl 
-          bg-gradient-to-br 
-          from-purple-600/50 
-          via-blue-500/50 
-          to-transparent
-          shadow-[0_0_20px_rgba(138,43,226,0.5)]
-        "
+        className="relative p-[3px] rounded-2xl bg-gradient-to-br from-purple-600/50 via-blue-500/50 to-transparent shadow-[0_0_20px_rgba(138,43,226,0.5)]"
       >
         {/* 🌈 Pulsing Neon Glow */}
         <motion.div
@@ -45,14 +36,7 @@ export default function TechStack() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="
-            backdrop-blur-xl 
-            bg-white/10 
-            border border-white/10 
-            rounded-2xl 
-            shadow-xl 
-            p-6
-          "
+          className="backdrop-blur-xl bg-white/10 border border-white/10 rounded-2xl shadow-xl p-6"
         >
           <img
             src="/neon-tech.png"

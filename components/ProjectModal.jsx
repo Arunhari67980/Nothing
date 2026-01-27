@@ -6,8 +6,7 @@ export default function ProjectModal({ title, description, image, tags, link, on
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 bg-black/70 backdrop-blur-xl 
-        flex items-center justify-center z-999"
+        className="fixed inset-0 bg-black/70 backdrop-blur-xl flex items-center justify-center z-999"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -18,8 +17,7 @@ export default function ProjectModal({ title, description, image, tags, link, on
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
-          className="bg-black/50 border border-white/10 rounded-3xl p-6 
-          backdrop-blur-xl w-[90%] max-w-2xl shadow-2xl"
+          className="bg-black/50 border border-white/10 rounded-3xl p-6 backdrop-blur-xl w-[90%] max-w-2xl shadow-2xl"
         >
           {/* Close Button */}
           <button

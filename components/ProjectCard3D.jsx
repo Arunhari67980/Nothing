@@ -54,10 +54,7 @@ export default function ProjectCard3D({
           style={style}
           whileHover={{ scale: 1.04 }}
           transition={{ type: "spring", stiffness: 200, damping: 18 }}
-          className="relative rounded-2xl overflow-hidden 
-            bg-black/40 border border-white/10 
-            backdrop-blur-md shadow-2xl
-            transition-all duration-300"
+          className="relative rounded-2xl overflow-hidden bg-black/40 border border-white/10 backdrop-blur-md shadow-2xl transition-all duration-300"
         >
 
           {/* Neon Glow */}
@@ -71,8 +68,7 @@ export default function ProjectCard3D({
 
           {/* Shine Effect */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 pointer-events-none">
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent rotate-12
-            -translate-x-[150%] group-hover:translate-x-[150%] duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent rotate-12 -translate-x-[150%] group-hover:translate-x-[150%] duration-700" />
           </div>
 
           {/* Category Badge */}
@@ -98,8 +94,7 @@ export default function ProjectCard3D({
               {tags.map((t, i) => (
                 <span
                   key={i}
-                  className="px-2 py-1 text-xs rounded-full bg-white/5 border border-white/10 text-gray-200
-                  hover:bg-purple-500/20 hover:text-white transition-all"
+                  className="px-2 py-1 text-xs rounded-full bg-white/5 border border-white/10 text-gray-200 hover:bg-purple-500/20 hover:text-white transition-all"
                 >
                   {t}
                 </span>
