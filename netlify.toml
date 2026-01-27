@@ -1,18 +1,11 @@
 # Netlify configuration for Next.js
 [build]
 command = "npm run build"
-functions = "netlify/functions"
 publish = ".next"
 
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
+[[plugins]]
+package = "@netlify/plugin-nextjs"
 
 [dev]
 command = "npm run dev"
 port = 3000
-
-[[edge_functions]]
-path = "/*"
-function = "next"
