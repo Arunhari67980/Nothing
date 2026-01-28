@@ -68,7 +68,7 @@ export default function ContactPage() {
             {/* Email */}
             <motion.div whileHover={{ scale: 1.03 }} className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-5 shadow-xl">
               <p className="text-gray-400 text-sm">Email</p>
-              <h4 className="text-lg font-semibold">arunhari@example.com</h4>
+              <h4 className="text-lg font-semibold">arunhari67890@gmail.com</h4>
             </motion.div>
 
             {/* Phone */}
@@ -80,7 +80,7 @@ export default function ContactPage() {
             {/* Location */}
             <motion.div whileHover={{ scale: 1.03 }} className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-5 shadow-xl">
               <p className="text-gray-400 text-sm">Location</p>
-              <h4 className="text-lg font-semibold">Tamil Nadu, India</h4>
+              <h4 className="text-lg font-semibold">Kanyakumari,TamilNadu, India</h4>
             </motion.div>
 
           </div>

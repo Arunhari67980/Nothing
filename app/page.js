@@ -92,7 +92,7 @@ export default function Home() {
         {/* View Projects */}
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Link href="/projects">
-            <Button variant="outline" className="border-white bg-white text-black font-semibold">
+            <Button variant="outline" className="border-white/50 bg-black text-white font-semibold">
               View Projects
             </Button>
           </Link>
@@ -101,7 +101,7 @@ export default function Home() {
         {/* Contact Me */}
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Link href="/contact">
-            <Button variant="outline" className="border-white bg-white text-black font-semibold">
+            <Button variant="outline" className="border-white/50 bg-black text-white font-semibold">
               Contact Me
             </Button>
           </Link>
