@@ -185,11 +185,11 @@ export default function Home() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.9 }}
-        className="mt-8 sm:mt-12 grid grid-cols-2 md:flex md:flex-wrap justify-center gap-3 sm:gap-6 md:gap-10 z-10 w-full max-w-4xl px-2"
+        className="mt-8 sm:mt-12 grid grid-cols-2 md:grid-cols-4 justify-center gap-3 sm:gap-6 z-10 w-full max-w-4xl px-2"
       >
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="text-center px-4 py-4 sm:px-8 sm:py-6 md:px-12 md:py-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-purple-500/30 transition-all duration-300"
+          className="text-center px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-purple-500/30 transition-all duration-300 w-full aspect-square flex flex-col items-center justify-center"
         >
           <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
             5+
@@ -199,7 +199,7 @@ export default function Home() {
 
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="text-center px-4 py-4 sm:px-8 sm:py-6 md:px-12 md:py-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-blue-500/30 transition-all duration-300"
+          className="text-center px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-blue-500/30 transition-all duration-300 w-full aspect-square flex flex-col items-center justify-center"
         >
           <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
             3+
@@ -209,7 +209,7 @@ export default function Home() {
 
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="text-center px-4 py-4 sm:px-8 sm:py-6 md:px-12 md:py-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-green-500/30 transition-all duration-300"
+          className="text-center px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-green-500/30 transition-all duration-300 w-full aspect-square flex flex-col items-center justify-center"
         >
           <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
             10+
@@ -219,7 +219,7 @@ export default function Home() {
 
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="text-center px-4 py-4 sm:px-8 sm:py-6 md:px-12 md:py-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-orange-500/30 transition-all duration-300"
+          className="text-center px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-orange-500/30 transition-all duration-300 w-full aspect-square flex flex-col items-center justify-center"
         >
           <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 to-yellow-500 bg-clip-text text-transparent">
             100%
