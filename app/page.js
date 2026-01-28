@@ -118,7 +118,7 @@ export default function Home() {
         className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-4 sm:gap-6 z-10"
       >
         <a
-          href="https://github.com/arun"
+          href="https://github.com/Arunhari67980"
           target="_blank"
           rel="noopener noreferrer"
           className="group"
@@ -134,7 +134,7 @@ export default function Home() {
         </a>
 
         <a
-          href="https://linkedin.com/in/arun"
+          href="https://www.linkedin.com/in/arunhari678/"
           target="_blank"
           rel="noopener noreferrer"
           className="group"
@@ -166,7 +166,7 @@ export default function Home() {
         </a>
 
         <a
-          href="mailto:arun@example.com"
+          href="mailto:arunhari67890@gmail.com"
           className="group"
         >
           <motion.div

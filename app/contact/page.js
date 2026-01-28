@@ -161,9 +161,9 @@ export default function ContactPage() {
       {/* SOCIAL MEDIA ICONS */}
       <div className="mt-20 flex justify-center gap-8">
         {[
-          { name: "github", url: "https://github.com/" },
-          { name: "linkedin", url: "https://linkedin.com/" },
-          { name: "instagram", url: "https://instagram.com/" },
+          { name: "github", url: "https://github.com/Arunhari67980" },
+          { name: "linkedin", url: "https://www.linkedin.com/in/arunhari678/" },
+          { name: "instagram", url: "https://www.instagram.com/_silent_builder_?igsh=ZDh2aGdubTR1MDdm" },
           { name: "whatsapp", url: "https://wa.me/9486730226" },
         ].map((icon, i) => (
           <motion.a
