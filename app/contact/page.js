@@ -35,7 +35,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-24 relative overflow-hidden">
+    <main className="h-screen bg-transparent text-white px-6 py-24 relative overflow-hidden flex flex-col">
       <Navbar />
 
       {/* Neon Background Glow */}
@@ -159,7 +159,7 @@ export default function ContactPage() {
       </section>
 
       {/* SOCIAL MEDIA ICONS */}
-      <div className="mt-20 flex justify-center gap-8">
+      <div className="mt-12 flex justify-center gap-8">
         {[
           { name: "github", url: "https://github.com/Arunhari67980" },
           { name: "linkedin", url: "https://www.linkedin.com/in/arunhari678/" },

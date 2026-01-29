@@ -1,66 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "../components/ui/button";
 import Navbar from "../components/Navbar";
-import ParallaxBackground from "../components/ParallaxBackground";
 import TypingText from "../components/TypingText";
 import Link from "next/link";
 import MiniArunChat from "../components/MiniArunChat";
 
-// Generate particles only on client side to avoid hydration mismatch
-function generateParticles() {
-  return Array.from({ length: 50 }).map((_, i) => ({
-    id: i,
-    x: Math.random() * 800,
-    y: Math.random() * 800,
-    duration: 6 + Math.random() * 6,
-    yAnimate: (Math.random() * 800) - 400,
-  }));
-}
-
 export default function Home() {
-  const [particles, setParticles] = useState([]);
-
-  useEffect(() => {
-    setParticles(generateParticles());
-  }, []);
   return (
-    <main className="min-h-screen bg-black text-white px-4 sm:px-6 flex flex-col items-center justify-center overflow-x-hidden overflow-y-auto relative pt-24 pb-12 md:pt-0 md:pb-0">
-
-      {/* Parallax Background */}
-      <div className="absolute inset-0 -z-10">
-        <ParallaxBackground />
-      </div>
+    <main className="min-h-screen bg-transparent text-white px-4 sm:px-6 flex flex-col items-center justify-center overflow-x-hidden overflow-y-auto relative pt-24 pb-12 md:pt-0 md:pb-0">
 
       <Navbar />
-
-      {/* Static glowing blobs */}
-      <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden pointer-events-none">
-        <div className="w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-[150px] absolute -top-40 -left-40" />
-        <div className="w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[150px] absolute -bottom-40 -right-40" />
-      </div>
-
-      {/* Floating particles */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        {particles.map((particle) => (
-          <motion.div
-            key={particle.id}
-            className="absolute w-1 h-1 bg-white rounded-full"
-            initial={{ opacity: 0, x: particle.x, y: particle.y }}
-            animate={{
-              opacity: [0.4, 1, 0.4],
-              y: particle.yAnimate,
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        ))}
-      </div>
 
       {/* Hero Title */}
       <motion.h1

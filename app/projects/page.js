@@ -78,7 +78,7 @@ export default function ProjectsPage() {
   );
 
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-20">
+    <main className="min-h-screen bg-transparent text-white px-6 py-20">
       <Navbar />
 
       <section className="max-w-7xl mx-auto">

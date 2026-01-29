@@ -10,7 +10,7 @@ import TechStack from "../../components/TechStack";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-black text-white relative overflow-hidden px-6 py-24">
+    <main className="min-h-screen bg-transparent text-white relative overflow-hidden px-6 py-24">
       <Navbar />
 
       {/* Permanent Lottie BG */}

@@ -2,6 +2,7 @@ import AnimationProvider from "./animation-provider";
 import "./globals.css";
 import MiniArunChat from "../components/MiniArunChat";
 import StructuredData from "../components/StructuredData";
+import GlobalBackgroundProvider from "../components/GlobalBackgroundProvider";
 
 
 export const metadata = {
@@ -36,9 +37,11 @@ export default function RootLayout({ children }) {
         <StructuredData />
       </head>
       <body className="bg-black text-white">
-        <AnimationProvider>
-          {children}
-        </AnimationProvider>
+        <GlobalBackgroundProvider>
+          <AnimationProvider>
+            {children}
+          </AnimationProvider>
+        </GlobalBackgroundProvider>
         <MiniArunChat />
 
       </body>
