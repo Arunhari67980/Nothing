@@ -26,7 +26,7 @@ export default function ProjectsPage() {
       description: "Interactive designer portfolio with animations and CMS-driven content.",
       tags: ["Web", "Next.js"],
       image: "/projects/pic2.jpg",
-      link: "#",
+      link: "nothing-jknw.vercel.app",
     },
     {
       title: "SaaS Dashboard",
