@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "../../components/Navbar";
 import { motion } from "framer-motion";
 import ProjectCard3D from "../../components/ProjectCard3D";
+import ProjectsPageBg from "../../components/backgrounds/ProjectsPageBg";
 
 export default function ProjectsPage() {
   // Available filter categories
@@ -78,8 +79,10 @@ export default function ProjectsPage() {
   );
 
   return (
-    <main className="min-h-screen bg-transparent text-white px-6 py-20">
-      <Navbar />
+    <>
+      <ProjectsPageBg />
+      <main className="min-h-screen bg-transparent text-white px-6 py-20">
+        <Navbar />
 
       <section className="max-w-7xl mx-auto">
         {/* Title */}
@@ -147,5 +150,6 @@ export default function ProjectsPage() {
         </div>
       </section>
     </main>
+    </>
   );
 }

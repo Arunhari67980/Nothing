@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "../../components/Navbar";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
+import ContactPageBg from "../../components/backgrounds/ContactPageBg";
 
 export default function ContactPage() {
   // Form States
@@ -35,8 +36,10 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="h-screen bg-transparent text-white px-6 py-24 relative overflow-hidden flex flex-col">
-      <Navbar />
+    <>
+      <ContactPageBg />
+      <main className="h-screen bg-transparent text-white px-6 py-24 relative overflow-hidden flex flex-col">
+        <Navbar />
 
       {/* Neon Background Glow */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
@@ -190,5 +193,6 @@ export default function ContactPage() {
         </motion.div>
       )}
     </main>
+    </>
   );
 }

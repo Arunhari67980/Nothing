@@ -6,10 +6,13 @@ import Navbar from "../components/Navbar";
 import TypingText from "../components/TypingText";
 import Link from "next/link";
 import MiniArunChat from "../components/MiniArunChat";
+import HomePageBg from "../components/backgrounds/HomePageBg";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-transparent text-white px-4 sm:px-6 flex flex-col items-center justify-center overflow-x-hidden overflow-y-auto relative pt-24 pb-12 md:pt-0 md:pb-0">
+    <>
+      <HomePageBg />
+      <main className="min-h-screen bg-transparent text-white px-4 sm:px-6 flex flex-col items-center justify-center overflow-x-hidden overflow-y-auto relative pt-24 pb-12 md:pt-0 md:pb-0">
 
       <Navbar />
 
@@ -182,5 +185,6 @@ export default function Home() {
       <MiniArunChat />
 
     </main>
+    </>
   );
 }

@@ -36,10 +36,11 @@ export default function TargetCursor() {
     };
 
     const animateRings = () => {
-      ring1X += (mouseX - ring1X) * 0.4;
-      ring1Y += (mouseY - ring1Y) * 0.4;
-      ring2X += (mouseX - ring2X) * 0.3;
-      ring2Y += (mouseY - ring2Y) * 0.3;
+      ring1X += (mouseX - ring1X) * 0.35;
+      ring1Y += (mouseY - ring1Y) * 0.35;
+      // Ring 2 follows Ring 1 quickly and smoothly
+      ring2X += (ring1X - ring2X) * 0.5;
+      ring2Y += (ring1Y - ring2Y) * 0.5;
 
       ring1.style.left = ring1X + 'px';
       ring1.style.top = ring1Y + 'px';

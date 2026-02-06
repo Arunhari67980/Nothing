@@ -7,10 +7,13 @@ import Timeline from "../../components/Timeline";
 import Certificates from "../../components/Certificates";
 import TestimonialsCarousel from "../../components/TestimonialsCarousel";
 import TechStack from "../../components/TechStack";
+import AboutPageBg from "../../components/backgrounds/AboutPageBg";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-transparent text-white relative overflow-hidden px-6 py-24">
+    <>
+      <AboutPageBg />
+      <main className="min-h-screen bg-transparent text-white relative overflow-hidden px-6 py-24">
       <Navbar />
 
       {/* Permanent Lottie BG */}
@@ -116,6 +119,7 @@ export default function AboutPage() {
       {/* Testimonials */}
       <TestimonialsCarousel />
     </main>
+    </>
   );
 }
 

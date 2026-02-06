@@ -1,99 +1,187 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-
 export default function PremiumBackground() {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    let animationId;
-    let time = 0;
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    // Generate stars
-    const stars = [];
-    const starCount = Math.floor((canvas.width * canvas.height) / 8000);
-
-    const generateStars = () => {
-      stars.length = 0;
-      for (let i = 0; i < starCount; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 2 + 0.5,
-          opacity: Math.random() * 0.4 + 0.7,
-          twinkleSpeed: Math.random() * 0.08 + 0.04,
-          twinkleOffset: Math.random() * Math.PI * 2,
-        });
-      }
-    };
-
-    generateStars();
-
-    const drawStar = (star) => {
-      // Calculate twinkling effect - more dramatic
-      const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset) * 0.7 + 0.3;
-      const opacity = star.opacity * twinkle;
-
-      ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Add brighter glow to all stars
-      const glowGradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.radius * 4);
-      glowGradient.addColorStop(0, `rgba(255, 255, 255, ${opacity * 0.5})`);
-      glowGradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
-
-      ctx.fillStyle = glowGradient;
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.radius * 4, 0, Math.PI * 2);
-      ctx.fill();
-    };
-
-    const animate = () => {
-      // Clear with night sky gradient
-      const gradientBg = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      gradientBg.addColorStop(0, '#0a0e27');
-      gradientBg.addColorStop(0.5, '#050505');
-      gradientBg.addColorStop(1, '#0a0e27');
-
-      ctx.fillStyle = gradientBg;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Draw all stars
-      stars.forEach((star) => {
-        drawStar(star);
-      });
-
-      time++;
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 z-0"
-      style={{ display: 'block' }}
-    />
+    <>
+      <style>{`
+        @keyframes aurora-drift-1 {
+          0%, 100% {
+            transform: translate(0px, 0px);
+            opacity: 0.3;
+          }
+          25% {
+            transform: translate(30px, -20px);
+            opacity: 0.4;
+          }
+          50% {
+            transform: translate(-20px, 30px);
+            opacity: 0.35;
+          }
+          75% {
+            transform: translate(-30px, -30px);
+            opacity: 0.38;
+          }
+        }
+
+        @keyframes aurora-drift-2 {
+          0%, 100% {
+            transform: translate(0px, 0px);
+            opacity: 0.25;
+          }
+          33% {
+            transform: translate(-40px, 25px);
+            opacity: 0.35;
+          }
+          66% {
+            transform: translate(35px, -35px);
+            opacity: 0.28;
+          }
+        }
+
+        @keyframes aurora-drift-3 {
+          0%, 100% {
+            transform: translate(0px, 0px);
+            opacity: 0.2;
+          }
+          50% {
+            transform: translate(25px, 35px);
+            opacity: 0.32;
+          }
+        }
+
+        @keyframes subtle-shift {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+
+        .premium-bg-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: #0a0a0f;
+        }
+
+        .bg-gradient-mesh {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, #0a0a0f 0%, #1a0033 25%, #0f0520 50%, #1a0a2e 75%, #0a0a0f 100%);
+          background-size: 200% 200%;
+          animation: subtle-shift 15s ease-in-out infinite;
+        }
+
+        .aurora-light-1 {
+          position: absolute;
+          top: 10%;
+          left: 20%;
+          width: 600px;
+          height: 600px;
+          background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, rgba(147, 51, 234, 0.05) 40%, transparent 70%);
+          border-radius: 50%;
+          filter: blur(80px);
+          animation: aurora-drift-1 8s ease-in-out infinite;
+          will-change: transform;
+        }
+
+        .aurora-light-2 {
+          position: absolute;
+          bottom: 15%;
+          right: 15%;
+          width: 500px;
+          height: 500px;
+          background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0.04) 40%, transparent 70%);
+          border-radius: 50%;
+          filter: blur(90px);
+          animation: aurora-drift-2 10s ease-in-out infinite;
+          will-change: transform;
+        }
+
+        .aurora-light-3 {
+          position: absolute;
+          top: 40%;
+          right: 10%;
+          width: 700px;
+          height: 400px;
+          background: radial-gradient(ellipse, rgba(219, 39, 119, 0.1) 0%, rgba(219, 39, 119, 0.03) 40%, transparent 70%);
+          border-radius: 50%;
+          filter: blur(100px);
+          animation: aurora-drift-3 12s ease-in-out infinite;
+          will-change: transform;
+        }
+
+        .aurora-light-4 {
+          position: absolute;
+          bottom: 20%;
+          left: 10%;
+          width: 550px;
+          height: 550px;
+          background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(99, 102, 241, 0.02) 40%, transparent 70%);
+          border-radius: 50%;
+          filter: blur(85px);
+          animation: aurora-drift-1 9s ease-in-out infinite reverse;
+          will-change: transform;
+        }
+
+        .aurora-light-5 {
+          position: absolute;
+          top: 25%;
+          left: 15%;
+          width: 400px;
+          height: 400px;
+          background: radial-gradient(circle, rgba(139, 92, 246, 0.09) 0%, rgba(139, 92, 246, 0.02) 45%, transparent 70%);
+          border-radius: 50%;
+          filter: blur(75px);
+          animation: aurora-drift-2 11s ease-in-out infinite reverse;
+          will-change: transform;
+        }
+
+        .bg-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(to bottom, rgba(10, 10, 15, 0.3) 0%, transparent 30%, transparent 70%, rgba(10, 10, 15, 0.5) 100%);
+          pointer-events: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .aurora-light-1,
+          .aurora-light-2,
+          .aurora-light-3,
+          .aurora-light-4,
+          .aurora-light-5 {
+            animation: none;
+            opacity: 0.4;
+          }
+
+          .bg-gradient-mesh {
+            animation: none;
+          }
+        }
+      `}</style>
+
+      <div className="premium-bg-container">
+        <div className="bg-gradient-mesh" />
+        <div className="aurora-light-1" />
+        <div className="aurora-light-2" />
+        <div className="aurora-light-3" />
+        <div className="aurora-light-4" />
+        <div className="aurora-light-5" />
+        <div className="bg-overlay" />
+      </div>
+    </>
   );
 }

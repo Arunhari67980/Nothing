@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
+import ProjectDetailBg from "../../../components/backgrounds/ProjectDetailBg";
 
 const projectData = {
   "portfolio-website": {
@@ -30,14 +31,19 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-white text-2xl">
-        Project Not Found
-      </div>
+      <>
+        <ProjectDetailBg />
+        <div className="min-h-screen flex items-center justify-center text-white text-2xl">
+          Project Not Found
+        </div>
+      </>
     );
   }
 
   return (
-    <section className="max-w-4xl mx-auto px-6 py-24 text-white">
+    <>
+      <ProjectDetailBg />
+      <section className="max-w-4xl mx-auto px-6 py-24 text-white">
       <motion.h1
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
@@ -71,6 +77,7 @@ export default function ProjectDetails() {
           </motion.span>
         ))}
       </div>
-    </section>
+      </section>
+    </>
   );
 }
